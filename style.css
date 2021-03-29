@@ -1,0 +1,166 @@
+body {
+  padding: 0px;
+  margin: 0px;
+  background-color: #222831 !important;
+  color: #eeeeee;
+}
+
+/*PANTALLA LOGIN*/
+#pantallaLogin {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/*BOTONES GOOGLE*/
+#googleAuthIn {
+  width: 13rem;
+  height: 3rem;
+  background-color: white;
+  padding-top: 0.6rem;
+}
+
+/*HEADER*/
+#header {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-bottom: 1rem;
+  height: 85px;
+  color: #eeeeee;
+  background-color: #222831;
+  width: 100%;
+  box-shadow: 0px 5px 13px 0px rgba(0, 0, 0, 0.75);
+}
+
+#header p {
+  font-weight: 600;
+  margin-top: 1rem;
+}
+
+#header img {
+  height: 50px;
+  opacity: 80%;
+  filter: invert(1);
+}
+/*BOTON ADD*/
+#botonCarga {
+  position: fixed;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-weight: 700;
+  right: 5%;
+  bottom: 5%;
+  background-color: #00adb5;
+  border: none;
+  box-shadow: 0px 0px 13px 3px rgba(0, 0, 0, 0.75);
+}
+/*PANTALLA COMPRAS*/
+
+#pantallaListado {
+  position: relative;
+  text-align: center;
+  width: 100%;
+  height: 91vh;
+  background-color: #222831;
+  transition: 1s;
+}
+
+#pantallaListadoLista li {
+  margin-top: 20px;
+  background-color: #393e46;
+  color: #eeeeee;
+  transition: 1s;
+  font-weight: 700;
+}
+
+#pantallaListadoLista li:hover {
+  opacity: 70%;
+}
+
+/*DETALLE DE COMPRAS*/
+#pantallaDetalle {
+  width: 100%;
+  height: 87vh;
+  text-align: center;
+  background-color: #222831;
+  color: #eeeeee;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 1rem;
+}
+
+#pantallaDetalleDesc,
+#pantallaDetalleTitulo {
+  text-transform: capitalize;
+}
+
+#pantallaDetalleIcono {
+  width: 200px;
+  filter: invert(1);
+}
+
+#pantallaDetalleCerrar {
+  padding: 1rem;
+  margin: 2rem auto;
+  width: 80%;
+}
+
+#pantallaListadoBorrar {
+  border-radius: 5px;
+  height: fit-content;
+  width: fit-content;
+  margin: 2rem auto;
+  padding: 1rem;
+  width: 80%;
+}
+
+.botones {
+  display: flex;
+  flex-direction: column;
+  font-weight: 700;
+  width: 100%;
+}
+
+/*CON CARRITO VACIO*/
+
+#pantallaVacio {
+  width: 100%;
+  height: 70vh;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+  color: #eeeeee;
+  margin: 0%;
+  transition: 1s;
+}
+
+#pantallaVacio img {
+  opacity: 30%;
+  width: 15rem;
+}
+
+/*DISPLAY NONE DE PANTALLAS EXTRA*/
+
+#pantallaListado,
+#pantallaVacio,
+.header,
+#botonCarga,
+#pantallaDetalle,
+#googleAuthOut {
+  display: none;
+}
+
+/*PANTALLA POPUP*/
+
+.pantallaListado__icon {
+  height: 40px;
+  margin-right: 10px;
+}

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <title>Compras semanales</title>
+    <script src="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.css" /> 
+     
+  </head>
+  
+  <body>
+    <header id="header">
+      <img src="images/iconMain.svg" alt="iconMain" class="iconMain"><p>Lista de compras</p> 
+      <button id="googleAuthOut">LOG OUT</button>
+    </header>
+    
+    <section id="pantallaLogin">
+      <button id="googleAuthIn">Sign in</button>
+    </section>
+    
+    <section id="pantallaVacio">
+      <h2 class="pantallaVacio__titulo">¡Aun no tienes productos <br> para comprar!</h1>
+        <img src="images/sadFace.png" alt="carita" class="pantallaVacio__img">
+    </section>
+    
+    <section id="pantallaListado">
+      <ul class="list-group list-group-flush" id="pantallaListadoLista"></ul>
+    </section>
+
+    <section id="pantallaDetalle">
+      <img src="images/iconCarne.svg" alt="bife" class="pantallaDetalle__icono" id="pantallaDetalleIcono">
+      <h1 class="pantallaDetalle__titulo" id="pantallaDetalleTitulo">prueba</h1>
+      <p class="pantallaDetalle__descripcion" id="pantallaDetalleDesc">descripcion</p>
+      <p>Guardado el: </p>
+      <p class="pantallaDetalle__fecha" id="pantallaDetalleFecha">fecha</p>
+      <div class="botones">
+      <button type="button" class="btn btn-primary" id="pantallaDetalleCerrar" onclick=cerrarDetalle()>Cerrar</button>
+      <button type="button" class="btn btn-danger" id="pantallaListadoBorrar">Borrar</button>
+      </div>
+      
+    </section>
+
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#pantallaCarga" id="botonCarga">
+      +
+    </button>
+    
+    <!-- Modal BOOTSTRAP -->
+    <div class="modal fade" id="pantallaCarga" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">¿Que deseas comprar?</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="mb-3">
+              <label for="pantallaCargaProducto" class="form-label">Nombre del producto</label>
+              <input type="text" class="form-control" id="pantallaCargaProducto" placeholder="Leche/Carne/Etc.">
+            </div>
+            <div class="mb-3">
+              <label for="pantallaCargaIcono" class="form-label">Selecciona una categoria</label>
+              <select id="pantallaCargaIcono" class="form-select">
+                <option value="images/iconCarne.svg">Carnes</option>
+                <option value="images/iconLacteos.svg">Lacteos</option>
+                <option value="images/iconFrutas.svg">Verduras</option>
+                <option value="images/iconGatito.svg">Mascotas</option>
+                <option value="images/iconLimpieza.svg">Limpieza</option>
+                <option value="images/iconVino.svg">Bebidas</option>
+                <option value="images/iconVegetal.svg">Vegetales</option>
+                <option value="images/iconVarios.svg">Otros</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="pantallaCargaInfo" class="form-label">Info de la compra</label>
+              <textarea class="form-control" id="pantallaCargaInfo" rows="3"></textarea>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar?</button>
+            <button type="button" class="btn btn-primary" id="pantallaCargaAdd">Agregar a la lista</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-storage.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    <script src="scripts/main.js"></script>
+  </body>
+</html>
