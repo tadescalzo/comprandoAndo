@@ -8,17 +8,23 @@
     <title>Compras semanales</title>
     <script src="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.js"></script>
     <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.css" /> 
-     
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
   </head>
   
   <body>
     <header id="header">
-      <img src="images/iconMain.svg" alt="iconMain" class="iconMain"><p>Lista de compras</p> 
-      <button id="googleAuthOut">LOG OUT</button>
+      <img src="images/logo.png" alt="iconMain" class="iconMain"><p>Comprando ando</p> 
+      <button id="googleAuthOut"><img src="images/logOut.png" alt="log out icono"></button>
     </header>
     
     <section id="pantallaLogin">
-      <button id="googleAuthIn">Sign in</button>
+      <div id='forma'></div>
+      <div class="divLogin"><h1>ComprandoAndo</h1>
+      <img class='logo'src="images/logo.png" alt="logo">
+      </div>
+      <button id="googleAuthIn"> <img src="images/logoGoogle.png" alt="logo Google">Entrar con Google</button>
+      <p class="footerLogin">App creada por Tades</p>
     </section>
     
     <section id="pantallaVacio">
@@ -58,7 +64,7 @@
           <div class="modal-body">
             <div class="mb-3">
               <label for="pantallaCargaProducto" class="form-label">Nombre del producto</label>
-              <input type="text" class="form-control" id="pantallaCargaProducto" placeholder="Leche/Carne/Etc.">
+              <input type="text" class="form-control" id="pantallaCargaProducto" autocomplete="off" placeholder="Leche/Carne/Etc.">
             </div>
             <div class="mb-3">
               <label for="pantallaCargaIcono" class="form-label">Selecciona una categoria</label>
@@ -79,7 +85,7 @@
             </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar?</button>
+            <button type="button" class="btn btn-secondary" id="pantallaCargaCerrar" data-bs-dismiss="modal">Cerrar?</button>
             <button type="button" class="btn btn-primary" id="pantallaCargaAdd">Agregar a la lista</button>
           </div>
         </div>
