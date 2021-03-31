@@ -1,8 +1,21 @@
+:root {
+  --main-font-color: #013237;
+  --main-bg-color: #eaf9e7;
+  --secondary-bg-color: #4ca771;
+  --alt-bg-color: #c0e6ba;
+}
+
 body {
   padding: 0px;
   margin: 0px;
-  background-color: #222831 !important;
-  color: #eeeeee;
+  background-color: var(--main-bg-color) !important;
+  color: var(--main-font-color);
+  font-family: "Montserrat", sans-serif !important;
+}
+
+#googleAuthIn,
+#googleAuthOut {
+  all: unset;
 }
 
 /*PANTALLA LOGIN*/
@@ -10,29 +23,86 @@ body {
   width: 100%;
   height: 100vh;
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  color: var(--main-font-color);
+}
+
+.divLogin {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.logo {
+  height: 250px;
+  width: 250px;
+}
+
+#pantallaLogin p {
+  font-weight: 700;
+}
+
+.footerLogin {
+  position: fixed;
+  bottom: 2%;
+}
+
+#forma {
+  width: 40rem;
+  height: 50rem;
+  background-color: #c0e6ba96;
+  z-index: -2;
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  position: absolute;
+  top: -15%;
+  filter: blur(5px);
 }
 
 /*BOTONES GOOGLE*/
 #googleAuthIn {
   width: 13rem;
   height: 3rem;
-  background-color: white;
-  padding-top: 0.6rem;
+  background-color: var(--secondary-bg-color);
+  border-radius: 10px;
+  text-align: center;
+  padding-top: 0.1rem;
+  font-weight: 700;
+  padding-top: 0.2rem;
+  cursor: pointer;
+}
+
+#googleAuthIn img {
+  width: 30px;
+  margin: 0px 5px 2px 0px;
+}
+
+#googleAuthOut {
+  width: fit-content;
+  height: fit-content;
+  cursor: pointer;
+}
+#googleAuthOut img {
+  opacity: 50%;
+  width: 35px;
+  height: 35px;
 }
 
 /*HEADER*/
-#header {
+#header,
+header {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   margin-bottom: 1rem;
   height: 85px;
-  color: #eeeeee;
-  background-color: #222831;
+  color: var(--main-font-color);
+  background-color: var(--secondary-bg-color);
   width: 100%;
-  box-shadow: 0px 5px 13px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 5px 10px 1px rgba(0, 0, 0, 0.45);
 }
 
 #header p {
@@ -40,10 +110,8 @@ body {
   margin-top: 1rem;
 }
 
-#header img {
-  height: 50px;
-  opacity: 80%;
-  filter: invert(1);
+.iconMain {
+  height: 70px;
 }
 /*BOTON ADD*/
 #botonCarga {
@@ -54,10 +122,11 @@ body {
   font-weight: 700;
   right: 5%;
   bottom: 5%;
-  background-color: #00adb5;
+  background-color: var(--secondary-bg-color);
   border: none;
-  box-shadow: 0px 0px 13px 3px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 13px 1px rgba(0, 0, 0, 0.75);
 }
+
 /*PANTALLA COMPRAS*/
 
 #pantallaListado {
@@ -65,19 +134,26 @@ body {
   text-align: center;
   width: 100%;
   height: 91vh;
-  background-color: #222831;
+  background-color: var(--main-bg-color);
   transition: 1s;
 }
 
 #pantallaListadoLista li {
   margin-top: 20px;
-  background-color: #393e46;
-  color: #eeeeee;
+  background-color: var(--alt-bg-color);
+  color: var(--main-font-color);
   transition: 1s;
   font-weight: 700;
+  text-transform: capitalize;
 }
 
 #pantallaListadoLista li:hover {
+  opacity: 70%;
+}
+
+.pantallaListado__icon {
+  height: 40px;
+  margin-right: 10px;
   opacity: 70%;
 }
 
@@ -86,8 +162,8 @@ body {
   width: 100%;
   height: 87vh;
   text-align: center;
-  background-color: #222831;
-  color: #eeeeee;
+  background-color: var(--alt-bg-color);
+  color: var(--main-font-color);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -102,13 +178,16 @@ body {
 
 #pantallaDetalleIcono {
   width: 200px;
-  filter: invert(1);
+  opacity: 30%;
 }
 
 #pantallaDetalleCerrar {
   padding: 1rem;
   margin: 2rem auto;
   width: 80%;
+  background-color: var(--alt-bg-color);
+  border: solid 2px var(--main-bg-color);
+  font-weight: 700;
 }
 
 #pantallaListadoBorrar {
@@ -118,6 +197,9 @@ body {
   margin: 2rem auto;
   padding: 1rem;
   width: 80%;
+  background-color: var(--secondary-bg-color);
+  border: solid 2px var(--main-bg-color);
+  font-weight: 700;
 }
 
 .botones {
@@ -137,7 +219,7 @@ body {
   align-items: center;
   text-align: center;
   flex-direction: column;
-  color: #eeeeee;
+  color: var(--main-font-color);
   margin: 0%;
   transition: 1s;
 }
@@ -145,6 +227,37 @@ body {
 #pantallaVacio img {
   opacity: 30%;
   width: 15rem;
+}
+
+/*MODAL*/
+.modal-dialog {
+  width: 100%;
+  height: 97vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modal-header {
+  background-color: var(--alt-bg-color);
+}
+
+.modal-body {
+  background-color: var(--main-bg-color);
+}
+.modal-footer {
+  background-color: var(--alt-bg-color);
+  display: flex;
+  justify-content: space-evenly !important;
+}
+
+#pantallaCargaAdd {
+  background-color: var(--secondary-bg-color);
+  border: solid 2px var(--main-bg-color);
+}
+
+#pantallaCargaCerrar {
+  background-color: var(--main-font-color);
+  border: solid 2px var(--main-bg-color);
 }
 
 /*DISPLAY NONE DE PANTALLAS EXTRA*/
@@ -156,11 +269,4 @@ body {
 #pantallaDetalle,
 #googleAuthOut {
   display: none;
-}
-
-/*PANTALLA POPUP*/
-
-.pantallaListado__icon {
-  height: 40px;
-  margin-right: 10px;
 }
