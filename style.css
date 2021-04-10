@@ -8,13 +8,19 @@
 body {
   padding: 0px;
   margin: 0px;
-  background-color: var(--main-bg-color) !important;
+  background: linear-gradient(
+    328deg,
+    rgba(195, 218, 191, 1) 10%,
+    rgba(234, 249, 231, 1) 39%,
+    rgba(234, 249, 231, 1) 80%
+  ) !important;
   color: var(--main-font-color);
   font-family: "Montserrat", sans-serif !important;
 }
 
 #googleAuthIn,
-#googleAuthOut {
+#googleAuthOut,
+#sumarCompra {
   all: unset;
 }
 
@@ -29,6 +35,8 @@ body {
   position: relative;
   overflow: hidden;
   color: var(--main-font-color);
+  transition: 1s;
+  opacity: 100%;
 }
 
 .divLogin {
@@ -47,7 +55,7 @@ body {
 }
 
 .footerLogin {
-  position: fixed;
+  position: absolute;
   bottom: 2%;
 }
 
@@ -100,9 +108,15 @@ header {
   margin-bottom: 1rem;
   height: 85px;
   color: var(--main-font-color);
-  background-color: var(--secondary-bg-color);
+  background: linear-gradient(
+    328deg,
+    rgba(76, 167, 113, 1) 10%,
+    rgba(115, 200, 149, 1) 39%,
+    rgba(114, 199, 149, 1) 80%
+  );
   width: 100%;
-  box-shadow: 0px 5px 10px 1px rgba(0, 0, 0, 0.45);
+  box-shadow: 0px 5px 10px 1px rgba(0, 0, 0, 0.25);
+  opacity: 100%;
 }
 
 #header p {
@@ -122,9 +136,195 @@ header {
   font-weight: 700;
   right: 5%;
   bottom: 5%;
-  background-color: var(--secondary-bg-color);
+  background: linear-gradient(
+    328deg,
+    rgba(76, 167, 113, 1) 10%,
+    rgba(115, 200, 149, 1) 39%,
+    rgba(114, 199, 149, 1) 80%
+  );
   border: none;
   box-shadow: 0px 0px 13px 1px rgba(0, 0, 0, 0.75);
+}
+/*BOTON TOTAL*/
+#botonTotal {
+  position: fixed;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-weight: 700;
+  left: 5%;
+  bottom: 5%;
+  background: linear-gradient(
+    328deg,
+    rgba(1, 50, 55, 1) 10%,
+    rgba(5, 68, 74, 1) 39%,
+    rgba(9, 81, 88, 1) 80%
+  );
+  border: none;
+  box-shadow: 0px 0px 13px 1px rgba(0, 0, 0, 0.75);
+}
+
+/*PANTALLA SUMA*/
+#pantallaSuma {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0%;
+  left: 0%;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: var(--alt-bg-color);
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 1s;
+  opacity: 0%;
+}
+
+#pantallaSumaModal {
+  position: relative;
+  width: 75%;
+  height: 40vh;
+  background: linear-gradient(
+    328deg,
+    rgba(173, 232, 197, 1) 0%,
+    rgba(115, 200, 149, 1) 20%,
+    rgba(76, 167, 113, 1) 54%
+  );
+  z-index: 2;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 1rem;
+  box-shadow: 0px 0px 20px 5px rgba(192, 230, 186, 0.2);
+  overflow: hidden;
+}
+
+.imputModal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+}
+
+#imputSuma {
+  background: none;
+  border: 2px solid var(--alt-bg-color);
+  width: 93%;
+  text-align: center;
+  transition: 1s;
+}
+
+#imputSuma:focus {
+  background: var(--main-bg-color);
+  outline: none;
+}
+
+#sumarCompra {
+  padding: 1rem;
+  width: 80%;
+  margin-top: 1rem;
+  border: solid 2px var(--main-bg-color);
+  font-weight: 700;
+  text-align: center;
+  transition: 1s;
+}
+
+#sumarCompra:hover,
+#sumarCompra:active,
+#sumarCompra:focus,
+#pantallaDetalleCerrar:hover,
+#pantallaDetalleCerrar:active,
+#pantallaDetalleCerrar:focus,
+#pantallaCargaAdd:hover,
+#pantallaCargaAdd:active,
+#pantallaCargaAdd:focus {
+  background: var(--main-bg-color);
+  color: var(--alt-bg-color);
+}
+
+/*PANTALLA TOTAL*/
+#pantallaTotal {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0%;
+  left: 0%;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: var(--alt-bg-color);
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 1s;
+  opacity: 0%;
+}
+#pantallaTotalModal {
+  position: relative;
+  width: 75%;
+  height: 60vh;
+  background: linear-gradient(
+    328deg,
+    rgba(173, 232, 197, 1) 0%,
+    rgba(115, 200, 149, 1) 20%,
+    rgba(76, 167, 113, 1) 54%
+  );
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 1rem;
+  box-shadow: 0px 0px 20px 5px rgba(192, 230, 186, 0.2);
+  overflow: hidden;
+}
+
+#pantallaTotalModal h3 {
+  background-color: var(--main-bg-color);
+  color: var(--secondary-bg-color);
+  font-weight: 700;
+  padding: 1rem 2rem;
+  margin-top: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0px 0px 13px 1px rgba(192, 230, 186, 0.3);
+}
+
+.circuloModal {
+  width: 30rem;
+  height: 30rem;
+  border-radius: 100%;
+  border: 3rem solid rgba(255, 255, 255, 0.322);
+  position: absolute;
+  opacity: 30%;
+  left: -90%;
+  z-index: -1;
+}
+
+.circuloModal::before {
+  content: "";
+  width: 20rem;
+  height: 20rem;
+  border-radius: 100%;
+  background-color: rgba(255, 255, 255, 0.424);
+  position: absolute;
+  opacity: 30%;
+  left: 9%;
+  top: 9%;
+}
+
+.fas {
+  font-size: 6rem;
+  opacity: 30%;
+}
+
+#cerrarTotal {
+  position: absolute;
+  cursor: pointer;
+  right: 5%;
+  top: 2%;
+  font-weight: 700;
+  font-size: 2em;
 }
 
 /*PANTALLA COMPRAS*/
@@ -133,9 +333,23 @@ header {
   position: relative;
   text-align: center;
   width: 100%;
-  height: 91vh;
-  background-color: var(--main-bg-color);
+  height: 87.7vh;
+  background: none;
   transition: 1s;
+  opacity: 100%;
+  overflow: hidden;
+}
+
+.formita {
+  width: 30rem;
+  height: 30rem;
+  border-radius: 100%;
+  filter: blur(40px);
+  opacity: 90%;
+  top: 10%;
+  left: -40%;
+  background-color: #c3dabf;
+  position: absolute;
 }
 
 #pantallaListadoLista li {
@@ -169,6 +383,8 @@ header {
   align-items: center;
   flex-direction: column;
   margin-top: 1rem;
+  transition: 1s;
+  opacity: 0%;
 }
 
 #pantallaDetalleDesc,
@@ -181,7 +397,8 @@ header {
   opacity: 30%;
 }
 
-#pantallaDetalleCerrar {
+#pantallaDetalleCerrar,
+#pantallaTotalBorrar {
   padding: 1rem;
   margin: 2rem auto;
   width: 80%;
@@ -213,7 +430,7 @@ header {
 
 #pantallaVacio {
   width: 100%;
-  height: 70vh;
+  height: 87.7vh;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -222,6 +439,7 @@ header {
   color: var(--main-font-color);
   margin: 0%;
   transition: 1s;
+  opacity: 0%;
 }
 
 #pantallaVacio img {
@@ -237,21 +455,54 @@ header {
   justify-content: center;
   align-items: center;
 }
+.modal-content {
+  border: none !important;
+  background: linear-gradient(
+    328deg,
+    rgba(173, 232, 197, 1) 0%,
+    rgba(115, 200, 149, 1) 20%,
+    rgba(76, 167, 113, 1) 54%
+  );
+}
+.list-group-flush > .list-group-item {
+  border-width: 0 0 0px !important;
+}
+#pantallaCargaProducto,
+#pantallaCargaInfo,
+#pantallaCargaIcono {
+  background-color: rgba(255, 255, 255, 0.26);
+}
+#pantallaCargaProducto:focus,
+#pantallaCargaInfo:focus,
+#pantallaCargaIcono:focus {
+  border-color: var(--main-bg-color);
+  box-shadow: 0px 0px 13px 1px rgba(192, 230, 186, 0.3);
+}
 .modal-header {
-  background-color: var(--alt-bg-color);
+  background-color: none;
+  display: flex;
+  flex-direction: column-reverse;
 }
 
 .modal-body {
-  background-color: var(--main-bg-color);
+  background-color: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.mb-3 {
+  width: 80%;
 }
 .modal-footer {
-  background-color: var(--alt-bg-color);
+  background-color: none;
   display: flex;
   justify-content: space-evenly !important;
 }
 
 #pantallaCargaAdd {
-  background-color: var(--secondary-bg-color);
+  background: none;
   border: solid 2px var(--main-bg-color);
 }
 
@@ -266,7 +517,20 @@ header {
 #pantallaVacio,
 .header,
 #botonCarga,
+#botonTotal,
+#pantallaSuma,
+#pantallaTotal,
 #pantallaDetalle,
 #googleAuthOut {
   display: none;
+}
+
+@media only screen and (min-width: 600px) {
+  /*PANTALLA LOGIN*/
+  body {
+    height: 100vh;
+  }
+  #forma {
+    width: 200rem;
+  }
 }
