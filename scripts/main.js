@@ -25,35 +25,20 @@ let pantallaListado = document.getElementById("pantallaListado");
 let pantallaListadoLista = document.getElementById("pantallaListadoLista");
 let pantallaDetalle = document.getElementById("pantallaDetalle");
 let pantallaListadoBorrar = document.getElementById("pantallaListadoBorrar");
+let pantallaTotal = document.getElementById("pantallaTotal");
+let pantallaSuma = document.getElementById("pantallaSuma");
 let googleAuthIn = document.getElementById("googleAuthIn");
 let googleAuthOut = document.getElementById("googleAuthOut");
 let botonCarga = document.getElementById("botonCarga");
+let cerrarTotal = document.getElementById("cerrarTotal");
+let borrarTotal = document.querySelector("#pantallaTotalBorrar");
+let botonTotal = document.getElementById("botonTotal");
+let sumarCompra = document.getElementById("sumarCompra");
+let botonBorrarTodo = document.getElementById("botonBorrarTodo");
 /*ACTIVACION DE LA FUNCION DE GUARDAR*/
 let guardar = document
   .getElementById("pantallaCargaAdd")
   .addEventListener("click", guardarTodo);
-
-/*PANTALLA DESCRIPCION PRODUCTOS*/
-let pantallaListadoDesc = document
-  .getElementById("pantallaListadoLista")
-  .addEventListener("click", function (e) {
-    document.getElementById(
-      "pantallaDetalleTitulo"
-    ).innerHTML = e.target.getAttribute("data-producto");
-    document.getElementById(
-      "pantallaDetalleDesc"
-    ).innerHTML = e.target.getAttribute("data-info");
-    document.getElementById(
-      "pantallaDetalleFecha"
-    ).innerHTML = e.target.getAttribute("data-fecha");
-    document.getElementById("pantallaDetalleIcono").src = e.target.getAttribute(
-      "data-icono"
-    );
-    window.resultadoDesc = e.target.getAttribute("data-producto");
-    pantallaListado.style.display = "none";
-    pantallaDetalle.style.display = "flex";
-    botonCarga.style.display = "none";
-  });
 
 /*FUNCION AL GUARDAR PRODUCTO*/
 function guardarTodo() {
@@ -74,20 +59,59 @@ function guardarTodo() {
     info: info,
     fecha: fecha,
   });
-  console.log(fecha);
   let modelo = `<li class="list-group-item" data-producto="${producto}" data-icono="${icono}" data-info="${info}" data-fecha="${fecha}"> <img src="${icono}" alt="${producto}" class="pantallaListado__icon"> ${producto} </li>`;
   pantallaListadoLista.innerHTML += modelo;
 
   pantallaCarga.hide();
-  pantallaVacio.style.display = "none";
+  pantallaVacio.style.opacity = "0%";
+  setTimeout(function () {
+    pantallaVacio.style.display = "none";
+  }, 1);
   pantallaListado.style.display = "block";
+  setTimeout(function () {
+    pantallaListado.style.opacity = "100%";
+  }, 1);
 }
+
+/*PANTALLA DESCRIPCION PRODUCTOS*/
+let pantallaListadoDesc = document
+  .getElementById("pantallaListadoLista")
+  .addEventListener("click", (e) => {
+    document.getElementById(
+      "pantallaDetalleTitulo"
+    ).innerHTML = e.target.getAttribute("data-producto");
+    document.getElementById(
+      "pantallaDetalleDesc"
+    ).innerHTML = e.target.getAttribute("data-info");
+    document.getElementById(
+      "pantallaDetalleFecha"
+    ).innerHTML = e.target.getAttribute("data-fecha");
+    document.getElementById("pantallaDetalleIcono").src = e.target.getAttribute(
+      "data-icono"
+    );
+    window.resultadoDesc = e.target.getAttribute("data-producto");
+    pantallaDetalle.style.display = "flex";
+    setTimeout(function () {
+      pantallaDetalle.style.opacity = "100%";
+    }, 1);
+    pantallaListado.style.opacity = "0%";
+    setTimeout(function () {
+      pantallaListado.style.display = "none";
+    }, 1);
+    botonCarga.style.display = "none";
+  });
 
 /*CERRAR PANTALLA DETALLE DE PRODUCTO*/
 
 function cerrarDetalle() {
   pantallaListado.style.display = "block";
-  pantallaDetalle.style.display = "none";
+  setTimeout(function () {
+    pantallaListado.style.opacity = "100%";
+  }, 1);
+  pantallaDetalle.style.opacity = "0%";
+  setTimeout(function () {
+    pantallaDetalle.style.display = "none";
+  }, 1);
   botonCarga.style.display = "block";
   console.log("click");
 }
@@ -111,12 +135,20 @@ googleAuthIn.addEventListener("click", (e) => {
         photoUrl = user.photoURL;
         emailVerified = user.emailVerified;
         uid = user.uid;
-        console.log(name, email, emailVerified);
         googleAuthIn.style.display = "none";
         googleAuthOut.style.display = "block";
         botonCarga.style.display = "block";
+        botonTotal.style.display = "block";
         header.style.display = "flex";
-        pantallaLogin.style.display = "none";
+        pantallaLogin.style.opacity = "0%";
+        setTimeout(function () {
+          pantallaLogin.style.display = "none";
+        }, 1);
+      } else {
+        pantallaLogin.style.opacity = "100%";
+        setTimeout(function () {
+          pantallaLogin.style.display = "flex";
+        }, 1);
       }
     })
     .catch((error) => {
@@ -137,45 +169,59 @@ googleAuthOut.addEventListener("click", (e) => {
     .auth()
     .signOut()
     .then(() => {
-      console.log("out");
       pantallaListadoLista.innerHTML = "";
       header.style.display = "none";
       pantallaListado.style.display = "none";
       botonCarga.style.display = "none";
-      pantallaLogin.style.display = "flex";
+      pantallaLogin.style.opacity = "100%";
+      setTimeout(function () {
+        pantallaLogin.style.display = "flex";
+      }, 1);
+      pantallaVacio.style.opacity = "0%";
+      setTimeout(function () {
+        pantallaVacio.style.display = "none";
+      }, 1);
       googleAuthOut.style.display = "none";
       googleAuthIn.style.display = "block";
     })
-    .catch((error) => {
-      console.log("No habia nadie loggeado");
-    });
+    .catch((error) => {});
 });
 
 /*ONCHANGE AUTH*/
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
-    var uid = user.uid;
-    console.log(uid);
+    window.uid = user.uid;
     window.userRef = db.collection(uid);
     googleAuthOut.style.display = "block";
     googleAuthIn.style.display = "none";
     botonCarga.style.display = "block";
-    pantallaLogin.style.display = "none";
+    pantallaLogin.style.opacity = "0%";
+    setTimeout(function () {
+      pantallaLogin.style.display = "none";
+    }, 1);
     db.collection(uid)
       .get()
       .then((snapshot) => {
         snapshot.docs.forEach((doc) => {
           resultado = doc.data();
-          renderDoc(doc);
+          if (doc.id != "total") {
+            renderDoc(doc);
+          }
         });
       });
     if (pantallaListadoLista.innerHTML == "") {
-      pantallaVacio.style.display = "flex ";
+      pantallaLogin.style.opacity = "0%";
+      setTimeout(function () {
+        pantallaLogin.style.display = "none";
+      }, 1);
+      pantallaVacio.style.opacity = "100%";
+      setTimeout(function () {
+        pantallaVacio.style.display = "flex";
+      }, 1);
+      header.style.display = "flex";
     }
-
     /*BORRAR LISTA DE PRODUCTOS*/
     pantallaListadoBorrar.addEventListener("click", (e) => {
-      console.log(resultadoDesc);
       db.collection(uid)
         .doc(resultadoDesc)
         .delete()
@@ -188,7 +234,6 @@ firebase.auth().onAuthStateChanged((user) => {
         });
     });
   } else {
-    console.log("No hay nadie loggeado");
     googleAuthOut.style.display = "none";
     googleAuthIn.style.display = "block";
     botonCarga.style.display = "none";
@@ -199,6 +244,13 @@ firebase.auth().onAuthStateChanged((user) => {
 function renderDoc() {
   let modelo = `<li class="list-group-item" data-producto="${resultado.producto}" data-icono='${resultado.icono}' data-fecha="${resultado.fecha}" data-info="${resultado.info}"><img src="${resultado.icono}" alt="${resultado.producto}" class="pantallaListado__icon">${resultado.producto} </li>`;
   pantallaListadoLista.innerHTML += modelo;
-  pantallaVacio.style.display = "none";
+  pantallaLogin.style.opacity = "0%";
+  setTimeout(function () {
+    pantallaLogin.style.display = "none";
+  }, 1);
+  pantallaVacio.style.opacity = "0%";
+  setTimeout(function () {
+    pantallaVacio.style.display = "none";
+  }, 1);
   pantallaListado.style.display = "block";
 }
